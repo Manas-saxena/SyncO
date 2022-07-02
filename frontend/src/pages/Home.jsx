@@ -1,10 +1,11 @@
 import React , {useState} from 'react'
 import {v4 as uuidv4} from "uuid";
+import {useNavigate} from "react-router-dom"
 import taost, { toast } from 'react-hot-toast';
 const Home = () => {
   const [roomId, setRoomId] = useState("");
   const [userName , setUserName] = useState("");
-
+ const reactNavigator = useNavigate();
   const createNewRoom =  (e) =>{
     e.preventDefault();
     const id = uuidv4();
@@ -29,7 +30,11 @@ const Home = () => {
           <div className="inputGroup">
             <input type="text" name="roomId" onChange={inputChange} value={roomId} placeholder='Room ID' className="inputBox" />
             <input type="text" placeholder='USERNAME' value={userName}  onChange={inputChange} name="userName" className="inputBox" />
-            <button className='btn joinBtn'>Join</button>
+            <button className='btn joinBtn' onClick={()=>{reactNavigator(`/editor/${roomId}` ,{
+              state:{
+                username:userName
+              }
+            })}}>Join</button>
             <span className='createInfo'>
               If you don't have an invite then create {'\u00A0'} 
               <a onClick={createNewRoom} href="*" className='createNewBtn'>new room</a>

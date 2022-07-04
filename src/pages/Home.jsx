@@ -1,7 +1,7 @@
 import React , {useState} from 'react'
 import {v4 as uuidv4} from "uuid";
 import {useNavigate} from "react-router-dom"
-import taost, { toast } from 'react-hot-toast';
+import  { toast } from 'react-hot-toast';
 const Home = () => {
   const [roomId, setRoomId] = useState("");
   const [userName , setUserName] = useState("");
